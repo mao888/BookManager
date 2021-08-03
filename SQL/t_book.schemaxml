@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8" collation="utf8_general_ci">db_book</database>
+</source>
+<canvas zoom="130">
+<tables>
+<table name="t_booktype" view="colnames">
+<left>302</left>
+<top>103</top>
+<width>159</width>
+<height>273</height>
+<sql_create_table>CREATE TABLE `t_booktype` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bookTypeName` varchar(20) DEFAULT NULL,
+  `bookTypeDesc` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="t_book" view="colnames">
+<left>642</left>
+<top>103</top>
+<width>164</width>
+<height>296</height>
+<sql_create_table>CREATE TABLE `t_book` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bookName` varchar(20) DEFAULT NULL,
+  `author` varchar(20) DEFAULT NULL,
+  `sex` varchar(10) DEFAULT NULL,
+  `price` float DEFAULT NULL,
+  `bookDesc` varchar(1000) DEFAULT NULL,
+  `bookTypeId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_t_book` (`bookTypeId`),
+  CONSTRAINT `FK_t_book` FOREIGN KEY (`bookTypeId`) REFERENCES `t_booktype` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
